@@ -88,7 +88,7 @@ class ProjectController extends Controller
         $newProject = new Project();
         $newProject->fill($data);
         $newProject->save();
-        $newProject->technologies()->sync($data['technologies']);
+        $newProject->technologies()->sync($data['technologies'] ?? [] );
         return redirect()->route('admin.projects.show', $newProject->id)->with('message', "Project \" $newProject->title \" has been Created")->with('classMessage', "-success");
 
         
@@ -137,7 +137,7 @@ class ProjectController extends Controller
         $data = $request->validate($newValidateRules, $this->validateMessages);
 
         $project->update($data);
-        $project->technologies()->sync($data['technologies']);
+        $project->technologies()->sync($data['technologies'] ?? [] );
         return redirect()->route('admin.projects.show', compact('project'))->with('message', "Project \" $project->title \" has been edit")->with('classMessage', "-success");
     }
 
