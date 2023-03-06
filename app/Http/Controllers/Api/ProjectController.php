@@ -16,11 +16,11 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function show(project $project ){
-        $projects=project::with('type','technologies')->paginate();   //use ::paginate('n') to paginate
-        return response()->json([
-            'success'=> true,
-            'results'=> $project,
-        ]);
-    }
+    public function show(project $project){
+         $project=project::with('type','technologies')->findOrFail($project->id)->first();  //use ::paginate('n') to paginate
+         return response()->json([
+             'success'=> true,
+             'results'=> $project,
+         ]);
+     }
 }
