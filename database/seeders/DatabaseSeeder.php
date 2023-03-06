@@ -20,10 +20,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TypeSeeder::class,
             TechnologySeeder::class,
-            Role::class,
-            User::class,
             ProjectSeeder::class,
             ProjectTechnologySeeder::class,
+            Role::class,
+            User::class,
         ]);
     }
 }
